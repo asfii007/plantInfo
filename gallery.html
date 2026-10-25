@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Research Gallery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Inter',sans-serif;
+    }
+
+    body{
+      background:#e8f8e8;
+      overflow-x:hidden;
+      color:#163527;
+    }
+
+    /* BACKGROUND GLOW */
+
+    .bg-blur{
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#89ff8c;
+      filter:blur(130px);
+      opacity:.18;
+      border-radius:50%;
+      z-index:-1;
+    }
+
+    .blur1{
+      top:-120px;
+      left:-120px;
+    }
+
+    .blur2{
+      bottom:-150px;
+      right:-150px;
+    }
+
+    /* NAVBAR */
+
+   nav{
+  width:85%;
+  margin:35px auto;
+  background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(14px);
+  border-radius:24px;
+  padding:18px 35px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  box-shadow:0 8px 30px rgba(52, 184, 74, 0.15);
+}
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:0;
+    }
+.logo{
+  display:flex;
+  align-items:center;
+  gap: 5px;
+}
+
+.logo-box{
+  width:50px;
+  height:50px;
+}
+
+.logo-box img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+.logo-text{
+  margin-left:8px;
+}
+
+.nav-links{
+  display:flex;
+  gap:40px;
+  margin-left:auto;
+}
+
+
+.nav-links{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:40px;
+
+  list-style:none;
+}
+
+.nav-links li{
+
+  list-style:none;
+}
+
+.nav-links a{
+
+  text-decoration:none;
+
+  color:#1bbf70;
+
+  font-size:18px;
+
+  font-weight:600;
+}
+
+.nav-links a:hover{
+
+  color:#1f8f45;
+}
+
+
+   
+    /* HERO */
+
+    .hero{
+      text-align:center;
+      margin-top:90px;
+      padding:20px;
+    }
+
+    .hero h1{
+      font-size:70px;
+      line-height:1.1;
+      margin-bottom:20px;
+      font: weight 800;
+    }
+
+    .hero p{
+      max-width:700px;
+      margin:auto;
+      font-size:18px;
+      color:#25352b;
+      line-height:1.8;
+    }
+
+    /* GALLERY */
+
+    .gallery-section{
+      width:85%;
+      margin:100px auto;
+    }
+
+    .gallery-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      margin-bottom:45px;
+    }
+
+    .gallery-title h2{
+      font-size:42px;
+      font-weight:800;
+    }
+
+    .gallery-title p{
+      color:#0e1712;
+      margin-top:10px;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:28px;
+    }
+
+.gallery-card{
+  position:relative;
+  border-radius:28px;
+  overflow:hidden;
+  background:#ffffffcc;
+  backdrop-filter:blur(16px);
+  cursor:pointer;
+  transition:.4s ease;
+  padding:9px;
+}
+
+/* ROTATING GREEN LIGHT */
+
+.gallery-card::before{
+  content:"";
+  position:absolute;
+
+  width:700px;
+  height:700px;
+
+  background:conic-gradient(
+    transparent,
+    transparent,
+    transparent,
+    #42ff7b
+  );
+
+  animation:rotateBorder 4s linear infinite;
+
+  top:-180px;
+  left:-180px;
+}
+
+/* INNER CARD */
+
+.gallery-card::after{
+  content:"";
+  position:absolute;
+  inset:7px;
+  background:rgba(255,255,255,0.95);
+  border-radius:24px;
+  z-index:1;
+}
+
+/* KEEP CONTENT ABOVE */
+
+.gallery-card img,
+.gallery-card .card-content,
+.gallery-card .tag{
+  position:relative;
+  z-index:2;
+}
+
+/* IMAGE */
+
+.gallery-card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  transition:.4s;
+  border-radius:22px 22px 0 0;
+}
+
+.gallery-card:hover img{
+  transform:scale(1.05);
+}
+
+/* CONTENT */
+
+.card-content{
+  padding:24px;
+}
+
+.card-content h3{
+  font-size:24px;
+  margin-bottom:10px;
+}
+
+.card-content p{
+  color:#617167;
+  line-height:1.7;
+  font-size:15px;
+}
+
+/* HOVER EFFECT */
+
+.gallery-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 45px rgba(67, 255, 123, 0.25);
+}
+
+/* ANIMATION */
+
+@keyframes rotateBorder{
+
+  0%{
+    transform:rotate(0deg);
+  }
+
+  100%{
+    transform:rotate(360deg);
+  }
+
+}
+
+    .gallery-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 18px 40px rgba(10, 201, 48, 0.2);
+    }
+
+    .gallery-card img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      transition:.4s;
+    }
+
+    .gallery-card:hover img{
+      transform:scale(1.07);
+    }
+
+    .card-content{
+      padding:24px;
+    }
+
+    .card-content h3{
+      font-size:24px;
+      margin-bottom:10px;
+    }
+
+    .card-content p{
+      color:#617167;
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .tag{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(19, 197, 51, 0.3);
+      color:#1b5f33;
+      padding:8px 16px;
+      border-radius:50px;
+      font-size:13px;
+      font-weight:600;
+      backdrop-filter:blur(8px);
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.85);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:1000;
+      padding:20px;
+    }
+
+    .lightbox img{
+      max-width:90%;
+      max-height:85vh;
+      border-radius:20px;
+    }
+
+    .lightbox.active{
+      display:flex;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      .nav-links{
+        gap:20px;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero h1{
+        font-size:48px;
+      }
+
+      .gallery-title{
+        flex-direction:column;
+        align-items:start;
+        gap:10px;
+      }
+
+    }
+   
+
+  </style>
+</head>
+
+<body>
+
+  <div class="bg-blur blur1"></div>
+  <div class="bg-blur blur2"></div>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+<div class="logo-box">
+   <img src="logo.jpeg" alt="Logo">
+</div>
+      <div class="logo-text">
+   <h2>PlantInfo</h2>
+        <p><b>Smart Agriculture Support System</b></p>
+      </div>
+    </div>
+
+<ul class="nav-links">
+
+  <li><a href="index.html">Home</a></li>
+
+  <li><a href="disease.html">Diseases</a></li>
+
+  <li><a href="gallery.html">Research Gallery</a></li>
+
+</ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h1 style="color: #14a43a;">Research <br> Gallery</h1>
+
+    <p>
+      A collection of field visits, plant disease surveys,
+      awareness activities, and sustainable farming research
+      conducted as part of our CSP project.
+    </p>
+
+  </section>
+
+  <!-- GALLERY -->
+
+  <section class="gallery-section">
+    
+
+    <div class="gallery-title">
+
+      <div>
+        <h2>Survey Highlights</h2>
+<p>Studying plant health and environment protection.</p>      </div>
+
+    </div>
+
+    <div class="gallery-grid">
+
+      <!-- CARD 1 -->
+
+      <div class="gallery-card">
+
+
+        <img src="crop.jpeg" alt="">
+
+        <div class="card-content">
+          <h3>Leaf Disease Observation</h3>
+
+          <p>
+            Students observed infected leaves to identify common plant diseases and crop health problems.
+           </p>
+        </div>
+
+      </div>
+
+      <!-- CARD 2 -->
+
+      <div class="gallery-card">
+
+
+        <img src="plant.jpeg" alt="">
+
+        <div class="card-content">
+          <h3>Plant Health Analysis</h3>
+
+          <p>
+            Students examined plant growth and checked for disease symptoms during field visits.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- CARD 3 -->
+
+      <div class="gallery-card">
+
+
+        <img src="community.jpeg" alt="">
+        <div class="card-content">
+<h3>Farmer Guidance Session</h3>
+          <p>
+            Students learning farming methods and crop management techniques from farmers during agricultural field survey activities.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="gallery-card">
+        <img src="health.jpeg" alt="">
+        <div class="card-content">
+          <h3>Crop Monitoring Survey</h3>
+          <p>
+            Students monitored crop conditions to study disease spread and plant health.
+          </p>
+        </div>
+      </div>
+      <!-- CARD 5 -->
+      <div class="gallery-card">
+        <img src="kav.jpeg" alt="">
+        <div class="card-content">
+          <h3>Plant Health Inspection</h3>
+          <p>
+            Student examining plant leaves during field survey to identify diseases and study healthy crop growth.
+          </p>
+        </div>
+      </div>
+      <!-- CARD 6 -->
+      <div class="gallery-card">
+        <img src="photo4.jpeg" alt="">
+        <div class="card-content">
+          <h3>Eco-friendly Agriculture</h3>
+          <p>
+            Students studied sustainable farming methods that help improve crop growth and soil health.
+          </p>
+        </div>
+      </div>
+      <!--CARD 7-->
+      <div class="gallery-card">
+        <img src="photo.jpeg" alt="">
+        <div class="card-content">
+          <h3>Crop Field Awareness</h3>
+<p>Students interacting with farmers during field visits to study crop conditions.</p>        </div>
+      </div>
+      <!--CARD 8-->
+      <div class="gallery-card">
+        <img src="photo2.jpeg" alt="">
+        <div class="card-content">
+          <h3>Farmer Interaction Session</h3>
+          <p>Students interacted with farmers to learn about crop diseases and farming practices.</p>        </div>
+      </div>
+      <!--CARD 9-->
+      <div class="gallery-card">
+        <img src="photo3.jpeg" alt="">
+        <div class="card-content">
+<h3>Growth Observation</h3>        
+  <p>Students observed fruit growth and inspected plants for diseases, infections, and healthy agricultural crop development.</p>        </div>
+      </div>
+      <!--CARD 10-->
+      <div class="gallery-card">
+        <img src="photo1.jpeg" alt="">
+        <div class="card-content">
+<h3>Crop Field Discussion</h3>      
+<p>Students discussing crop growth and farming methods with farmers during agricultural field survey and awareness activities.</p>        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+
+  <div class="lightbox" id="lightbox">
+    <img src="" id="lightbox-img">
+  </div>
+
+  <script>
+
+    const cards = document.querySelectorAll(".gallery-card img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    cards.forEach(img => {
+
+      img.addEventListener("click", () => {
+
+        lightbox.classList.add("active");
+        lightboxImg.src = img.src;
+
+      });
+
+    });
+
+    lightbox.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+    });
+
+  </script>
+
+</body>
+</html>
